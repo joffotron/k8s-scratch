@@ -1,0 +1,3 @@
+```sh
+kubectl create -f ./
+```
