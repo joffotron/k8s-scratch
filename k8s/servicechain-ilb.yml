@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svchn-backend-svc
+  labels: 
+    app: servicechain
+    layer: proxy
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80 
+    targetPort: 8000
+    protocol: TCP
+  selector:
+    layer: backend
+    app: servicechain

@@ -1,0 +1,24 @@
+{
+  "id": "nginx",
+  "cpus": 0.2,
+  "mem": 128.0,
+  "instances": 3,
+  "labels":{
+        "HAPROXY_GROUP":"external",
+        "HAPROXY_0_VHOST":"test-dcos-PublicSl-1AHVE00ZSK4AY-1005945801.us-west-2.elb.amazonaws.com"
+    },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "nginx:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8080, 
+          "hostPort": 0, 
+          "servicePort": 10000, 
+          "protocol": "tcp" 
+        }
+      ]
+    }
+  }
+}
