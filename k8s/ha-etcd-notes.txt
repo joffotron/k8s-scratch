@@ -1,0 +1,31 @@
+sudo docker run \
+	-v /etc/ssl/certs:/etc/ssl/certs \
+	-v /mnt/master-pd/var/etcd:/var/etcd \
+	-v /var/log/etcd.log:/var/log/etcd.log \
+	-p 4001:4001 -p 2380:2380 -p 2379:2379 --net=host \
+gcr.io/google_containers/etcd:2.0.12 \
+/usr/local/bin/etcd \
+	--name test0 \
+	--initial-advertise-peer-urls 'http://172.20.1.9:2380' \
+	--listen-peer-urls 'http://0.0.0.0:2380' \
+	--advertise-client-urls 'http://172.20.1.9:2379,http://172.20.1.9:4001' \
+	--listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' \
+	--data-dir '/var/etcd/data/' \
+    --initial-cluster test0=http://172.20.1.9:2380,test1=http://172.20.1.76:2380,test2=http://172.20.1.77:2380
+
+#	--discovery 'https://discovery.etcd.io/a3396b02e06de2399554dde23cde1f06'
+
+
+sudo docker run -v /etc/ssl/certs:/etc/ssl/certs -v /mnt/master-pd/var/etcd:/var/etcd -v /var/log/etcd.log:/var/log/etcd.log -p 4001:4001 -p 2380:2380 -p 2379:2379 --net=host gcr.io/google_containers/etcd:2.0.12 /usr/local/bin/etcd --name test1 --initial-advertise-peer-urls 'http://172.20.1.76:2380' --listen-peer-urls 'http://0.0.0.0:2380' --advertise-client-urls 'http://172.20.1.76:2379,http://172.20.1.76:4001' --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --data-dir '/var/etcd/data/' --discovery 'https://discovery.etcd.io/a3396b02e06de2399554dde23cde1f06'
+
+
+
+sudo docker run -v /etc/ssl/certs:/etc/ssl/certs -v /mnt/master-pd/var/etcd:/var/etcd -v /var/log/etcd.log:/var/log/etcd.log -p 4001:4001 -p 2380:2380 -p 2379:2379 --net=host gcr.io/google_containers/etcd:2.0.12 /usr/local/bin/etcd --name test3 --initial-advertise-peer-urls 'http://172.20.1.77:2380' --listen-peer-urls 'http://0.0.0.0:2380' --advertise-client-urls 'http://172.20.1.77:2379,http://172.20.1.77:4001' --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --data-dir '/var/etcd/data/' --discovery 'https://discovery.etcd.io/a3396b02e06de2399554dde23cde1f06'
+
+
+
+Notes! 
+	Clear out the data dir!!
+	Mount the certs dir to get discovery to work
+	quote marks?
+
