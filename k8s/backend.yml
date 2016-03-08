@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: servicechain-backends
 spec: 
-  replicas: 4
+  replicas: 8
   selector:
     layer: backend
     app: servicechain

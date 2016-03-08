@@ -19,7 +19,7 @@
     "command": [
           "/bin/sh",
           "-c",
-          "/usr/local/bin/etcd --name ketcd0 --initial-advertise-peer-urls  http://172.20.1.9:2380 --advertise-client-urls        http://172.20.1.9:2379,http://172.20.1.9:4001 --listen-peer-urls             http://0.0.0.0:2380 --listen-client-urls           http://0.0.0.0:2379,http://0.0.0.0:4001 --initial-cluster ketcd0=http://172.20.1.9:2380,ketcd1=http://172.20.1.76:2380,ketcd2=http://172.20.1.77:2380 --data-dir /var/etcd/data/ >>/var/log/etcd.log 2>&1"
+          "/usr/local/bin/etcd --name ketcd0 --initial-advertise-peer-urls  http://172.20.1.9:2380 --advertise-client-urls        http://172.20.1.9:2379,http://172.20.1.9:4001 --listen-peer-urls             http://0.0.0.0:2380 --listen-client-urls           http://0.0.0.0:2379,http://0.0.0.0:4001 --initial-cluster ketcd0=http://172.20.1.9:2380,ketcd1=http://172.20.1.76:2380,ketcd2=http://172.20.1.77:2380 --data-dir /var/etcd/data/ >>/var/log/etcd.log --initial-cluster-state new 2>&1"
           ],
   "livenessProbe": {
       "httpGet": {

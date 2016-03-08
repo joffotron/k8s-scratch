@@ -28,4 +28,7 @@ Notes!
 	Clear out the data dir!!
 	Mount the certs dir to get discovery to work
 	quote marks?
-
+	Original etcd.manifest file gets restored on reboot. WTF. Cluster will take a min or two to heal
+	kube-proxy proxies local requests from minions to master API node
+	https://github.com/kubernetes/kubernetes/wiki/Debugging-FAQ#by-symptom
+	

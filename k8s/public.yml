@@ -1,35 +1,34 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  name: servicechain-v1
+  name: servicechain-v5
 spec: 
   replicas: 4
   selector:
     layer: frontend
     app: servicechain
-    version: v1
+    version: v5
   template:
     metadata:
       name: srvch-public
       labels:
         layer: frontend
         app: servicechain
-        version: v1
+        version: v5
     spec:
       containers:
       - name: srvch-public
         image: joffotron/public:latest
+        imagePullPolicy: Always
         ports:
           - containerPort: 8080
         env:
           - name: BACKEND_URL
             value: "http://svchn-backend-svc.default/"
+          - name: DOGSTATSD_HOST_N_PORT
+            value: "dogstatsd.default:8125"
         livenessProbe:
-          # an http probe
           httpGet:
             path: /
             port: 8080
-          # length of time to wait for a pod to initialize
-          # after pod startup, before applying health checking
-          initialDelaySeconds: 5
           timeoutSeconds: 2   

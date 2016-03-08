@@ -1,0 +1,11 @@
+kind: "Endpoints"
+apiVersion: "v1"
+metadata: 
+  name: "dogstatsd"
+subsets: 
+- addresses: 
+  - ip: "172.20.1.9"
+  ports: 
+  - port: 8125
+    protocol: "UDP"
+
